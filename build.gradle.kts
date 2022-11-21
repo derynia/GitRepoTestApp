@@ -8,8 +8,13 @@ buildscript {
         classpath(BuildPlugins.android)
         classpath(BuildPlugins.kotlin)
         classpath(BuildPlugins.hilt)
-        classpath("com.android.tools.build:gradle:7.3.1")
+        classpath(BuildPlugins.gradle)
+        classpath(BuildPlugins.ktlint)
     }
+}
+
+allprojects {
+    apply(plugin = BuildPlugins.ktlintMain)
 }
 
 tasks.register("clean", Delete::class) {

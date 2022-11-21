@@ -5,6 +5,10 @@ plugins {
     kotlin("kapt")
 }
 
+ktlint {
+    disabledRules.set(setOf("no-wildcard-imports"))
+}
+
 android {
     namespace = "com.gitrepotestapp"
     compileSdk = ConfigData.compileSdkVersion
@@ -75,11 +79,6 @@ dependencies {
     implementation(Deps.retrofitJson)
     implementation(Deps.okHttpLogging)
     implementation(Deps.retrofitAdapter)
-
-    // UI
-    implementation(Deps.glideCore)
-    annotationProcessor(Deps.glideCompiler)
-    kapt(Deps.glideCompiler)
 
     // ROOM
     api(Deps.roomRuntime)
