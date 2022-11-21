@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">GitRepoTestApp</string>
+    <string name="app_name">Git repo test App</string>
+    <string name="username_hint">Enter username</string>
+    <string name="repository_name">Repository name</string>
+    <string name="user_name_empty">User name is empty</string>
+    <string name="wrong_server_response">Wronge server response</string>
+    <string name="error_header">Error</string>
+    <string name="download_repo">Download repo</string>
 </resources>
