@@ -1,4 +1,4 @@
-package com.gitrepotestapp.presentation.adapter
+package com.gitrepotestapp.presentation.reposlist.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import com.gitrepotestapp.databinding.RepoListItemBinding
 import com.gitrepotestapp.network.model.UserRepoItem
 
 class ReposAdapter(
-    private val onItemClick : (UserRepoItem) -> Unit
+    private val onItemClick: (UserRepoItem) -> Unit
 ) : ListAdapter<UserRepoItem, ReposViewHolder>(ReposComparator()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReposViewHolder {
         val binding = RepoListItemBinding.inflate(

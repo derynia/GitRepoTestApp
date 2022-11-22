@@ -1,12 +1,11 @@
-package com.gitrepotestapp.presentation
+package com.gitrepotestapp.presentation.reposlist
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -14,7 +13,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.gitrepotestapp.R
 import com.gitrepotestapp.databinding.FragmentReposBinding
 import com.gitrepotestapp.network.model.UserRepoItem
-import com.gitrepotestapp.presentation.adapter.ReposAdapter
+import com.gitrepotestapp.presentation.reposlist.adapter.ReposAdapter
 import com.gitrepotestapp.presentation.extensions.showError
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -23,7 +22,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class ReposListFragment : Fragment(R.layout.fragment_repos) {
     private val binding: FragmentReposBinding by viewBinding(FragmentReposBinding::bind)
-    private val viewModel: ReposViewModel by activityViewModels()
+    private val viewModel: ReposViewModel by viewModels()
     private val reposAdapter = ReposAdapter { item -> downLoadRepo(item) }
 
     private fun downLoadRepo(item: UserRepoItem) {
@@ -39,8 +38,9 @@ class ReposListFragment : Fragment(R.layout.fragment_repos) {
     private fun FragmentReposBinding.initViews() {
         recyclerRepos.adapter = reposAdapter
 
-        editSearch.doAfterTextChanged {
-            viewModel.fetchData(it.toString())
+        editSearch.setText("derynia")
+        buttonSearch.setOnClickListener {
+            viewModel.fetchData(editSearch.text.toString())
         }
     }
 

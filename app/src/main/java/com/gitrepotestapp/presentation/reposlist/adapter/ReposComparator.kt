@@ -1,4 +1,4 @@
-package com.gitrepotestapp.presentation.adapter
+package com.gitrepotestapp.presentation.reposlist.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.gitrepotestapp.network.model.UserRepoItem

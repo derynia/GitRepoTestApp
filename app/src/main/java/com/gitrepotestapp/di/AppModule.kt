@@ -2,6 +2,8 @@ package com.gitrepotestapp.di
 
 import android.content.Context
 import androidx.annotation.StringRes
+import com.gitrepotestapp.db.ReposDb
+import com.gitrepotestapp.db.repository.DownloadedRepository
 import com.gitrepotestapp.network.ReposApi
 import dagger.Module
 import dagger.Provides
@@ -64,15 +66,14 @@ object AppModule {
     @Provides
     fun providesMainDispatcher(): CoroutineDispatcher = Dispatchers.Main
 
-//    @Provides
-//    @Singleton
-//    fun getDatabase(@ApplicationContext context: Context): GifsAppDb =
-//        GifsAppDb.getInstance(context)
-//
-//    @Provides
-//    @Singleton
-//    fun provideDbRepository(gifsAppDb: GifsAppDb) =
-//        LoadedPicsRepository(gifsAppDb, DataToLoadedMapper())
+    @Provides
+    @Singleton
+    fun getDatabase(@ApplicationContext context: Context): ReposDb =
+        ReposDb.getInstance(context)
+
+    @Provides
+    @Singleton
+    fun provideDownloadedRepository(reposDb: ReposDb) = DownloadedRepository(reposDb)
 }
 
 @Retention(AnnotationRetention.BINARY)

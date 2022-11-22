@@ -1,4 +1,4 @@
-package com.gitrepotestapp.presentation
+package com.gitrepotestapp.presentation.reposlist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

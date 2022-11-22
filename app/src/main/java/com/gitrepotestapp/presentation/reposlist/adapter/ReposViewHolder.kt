@@ -1,4 +1,4 @@
-package com.gitrepotestapp.presentation.adapter
+package com.gitrepotestapp.presentation.reposlist.adapter
 
 import android.text.Html
 import android.text.method.LinkMovementMethod
@@ -13,8 +13,8 @@ class ReposViewHolder(private val binding: RepoListItemBinding) :
         item: UserRepoItem,
         onItemClick: (UserRepoItem) -> Unit
     ) {
-        with (binding) {
-            textRepoName.text = Html.fromHtml("<a href=\"${item.url}\">${item.name}</a>")
+        with(binding) {
+            textRepoName.text = Html.fromHtml("<a href=\"${item.html_url}\">${item.name}</a>")
             textRepoName.movementMethod = LinkMovementMethod.getInstance()
             imageDownLoad.setOnClickListener { onItemClick(item) }
         }

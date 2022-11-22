@@ -76,11 +76,6 @@ dependencies {
     implementation(Deps.okHttpLogging)
     implementation(Deps.retrofitAdapter)
 
-    // UI
-    implementation(Deps.glideCore)
-    annotationProcessor(Deps.glideCompiler)
-    kapt(Deps.glideCompiler)
-
     // ROOM
     api(Deps.roomRuntime)
     annotationProcessor(Deps.roomCompiler)

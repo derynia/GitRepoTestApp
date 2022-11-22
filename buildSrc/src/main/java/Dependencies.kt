@@ -2,6 +2,7 @@ object BuildPlugins {
     val android by lazy { "com.android.tools.build:gradle:${Versions.gradlePlugin}" }
     val kotlin by lazy { "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}" }
     val hilt by lazy {"com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}"}
+    val gradle by lazy {"com.android.tools.build:gradle:${Versions.gradlePlugin}"}
 }
 
 /**
@@ -52,8 +53,4 @@ object Deps {
 
     // VB delegate
     val vbDelegate by lazy { "com.github.kirich1409:viewbindingpropertydelegate-noreflection:${Versions.vbDelegate}" }
-
-    // Glide
-    val glideCore by lazy { "com.github.bumptech.glide:glide:${Versions.glide}" }
-    val glideCompiler by lazy { "com.github.bumptech.glide:compiler:${Versions.glide}" }
 }

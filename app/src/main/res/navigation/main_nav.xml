@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/reposListFragment"
-        android:name="com.gitrepotestapp.presentation.ReposListFragment"
+        android:name="com.gitrepotestapp.presentation.reposlist.ReposListFragment"
         android:label="ReposListFragment" />
 </navigation>
