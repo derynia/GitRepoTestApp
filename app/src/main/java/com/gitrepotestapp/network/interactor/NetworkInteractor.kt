@@ -18,7 +18,7 @@ import javax.inject.Inject
 class NetworkInteractor @Inject constructor(
     private val reposApi: ReposApi,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
-    private val resourcesProvider: AppModule.ResourcesProvider
+    resourcesProvider: AppModule.ResourcesProvider
 ) {
     private val defaultMessage = resourcesProvider.getString(R.string.wrong_server_response)
 
@@ -49,8 +49,10 @@ class NetworkInteractor @Inject constructor(
     suspend fun getUserReposList(userName: String): Resource<List<UserRepoItem>> =
         withContext(ioDispatcher) {
             try {
-                return@withContext when (val result =
-                    getResultFromResponse(reposApi.getUserRepos(userName))) {
+                return@withContext when (
+                    val result =
+                        getResultFromResponse(reposApi.getUserRepos(userName))
+                ) {
                     is Resource.Success -> Resource.Success(result.data ?: listOf())
                     is Resource.Error -> result
                 }

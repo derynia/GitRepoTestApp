@@ -7,5 +7,6 @@ data class UserRepoItem(
     val node_id: String,
     val url: String,
     val downloads_url: String,
-    val html_url: String
+    val html_url: String,
+    val archive_url: String
 )

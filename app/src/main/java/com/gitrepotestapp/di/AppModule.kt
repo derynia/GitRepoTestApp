@@ -1,10 +1,15 @@
 package com.gitrepotestapp.di
 
+import android.app.Application
 import android.content.Context
 import androidx.annotation.StringRes
 import com.gitrepotestapp.db.ReposDb
+import com.gitrepotestapp.db.mapper.RepoToDownloadedRepoMapper
 import com.gitrepotestapp.db.repository.DownloadedRepository
 import com.gitrepotestapp.network.ReposApi
+import com.gitrepotestapp.network.interactor.NetworkInteractor
+import com.gitrepotestapp.network.usecase.UserReposUseCase
+import com.gitrepotestapp.util.ReposDownLoadManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -74,6 +79,18 @@ object AppModule {
     @Provides
     @Singleton
     fun provideDownloadedRepository(reposDb: ReposDb) = DownloadedRepository(reposDb)
+
+    @Provides
+    @Singleton
+    fun provideDownLoadManager(application: Application) = ReposDownLoadManager(application)
+
+    @Provides
+    fun repoToDownloadedRepoMapper(): RepoToDownloadedRepoMapper = RepoToDownloadedRepoMapper()
+
+    @Provides
+    @Singleton
+    fun provideUserRepoUseCase(networkInteractor: NetworkInteractor): UserReposUseCase =
+        UserReposUseCase(networkInteractor)
 }
 
 @Retention(AnnotationRetention.BINARY)

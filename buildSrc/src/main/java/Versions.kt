@@ -1,4 +1,6 @@
 object Versions {
+    const val ktlint = "11.0.0"
+
     // Tests
     const val junit = "4.13.2"
     const val extJunit = "1.1.3"

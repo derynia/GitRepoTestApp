@@ -9,7 +9,12 @@ buildscript {
         classpath(BuildPlugins.kotlin)
         classpath(BuildPlugins.hilt)
         classpath(BuildPlugins.gradle)
+        classpath(BuildPlugins.ktlint)
     }
+}
+
+allprojects {
+    apply(plugin = BuildPlugins.ktlintMain)
 }
 
 tasks.register("clean", Delete::class) {

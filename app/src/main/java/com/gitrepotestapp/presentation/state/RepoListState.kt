@@ -8,4 +8,3 @@ data class RepoListState(
     val errorMessage: String? = null,
     val successResult: List<UserRepoItem> = listOf()
 ) : IProgressable
-

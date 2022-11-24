@@ -5,6 +5,10 @@ plugins {
     kotlin("kapt")
 }
 
+ktlint {
+    disabledRules.set(setOf("no-wildcard-imports"))
+}
+
 android {
     namespace = "com.gitrepotestapp"
     compileSdk = ConfigData.compileSdkVersion

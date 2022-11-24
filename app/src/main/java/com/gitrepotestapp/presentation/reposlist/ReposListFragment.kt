@@ -2,7 +2,6 @@ package com.gitrepotestapp.presentation.reposlist
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -13,8 +12,8 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.gitrepotestapp.R
 import com.gitrepotestapp.databinding.FragmentReposBinding
 import com.gitrepotestapp.network.model.UserRepoItem
-import com.gitrepotestapp.presentation.reposlist.adapter.ReposAdapter
 import com.gitrepotestapp.presentation.extensions.showError
+import com.gitrepotestapp.presentation.reposlist.adapter.ReposAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -26,7 +25,7 @@ class ReposListFragment : Fragment(R.layout.fragment_repos) {
     private val reposAdapter = ReposAdapter { item -> downLoadRepo(item) }
 
     private fun downLoadRepo(item: UserRepoItem) {
-        Toast.makeText(requireContext(), "${item.name} Clicked", Toast.LENGTH_LONG).show()
+        viewModel.downLoadRepo(item)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,7 +37,6 @@ class ReposListFragment : Fragment(R.layout.fragment_repos) {
     private fun FragmentReposBinding.initViews() {
         recyclerRepos.adapter = reposAdapter
 
-        editSearch.setText("derynia")
         buttonSearch.setOnClickListener {
             viewModel.fetchData(editSearch.text.toString())
         }
@@ -64,7 +62,7 @@ class ReposListFragment : Fragment(R.layout.fragment_repos) {
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.repos.collectLatest { event ->
-                    when  {
+                    when {
                         event.isLoading -> showProgress()
                         event.isSuccessful -> {
                             hideProgress()
@@ -75,6 +73,5 @@ class ReposListFragment : Fragment(R.layout.fragment_repos) {
                 }
             }
         }
-
     }
 }

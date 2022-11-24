@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.ListAdapter
 import com.gitrepotestapp.databinding.DownloadedRepoListItemBinding
 import com.gitrepotestapp.db.entity.DownloadedRepo
 
-class DownloadedReposAdapter : ListAdapter<DownloadedRepo, DownloadedReposViewHolder>(
+class DownloadedReposAdapter(
+    private val onTextClick: (DownloadedRepo) -> Unit
+) : ListAdapter<DownloadedRepo, DownloadedReposViewHolder>(
     DownloadedReposComparator()
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DownloadedReposViewHolder {
@@ -20,7 +22,7 @@ class DownloadedReposAdapter : ListAdapter<DownloadedRepo, DownloadedReposViewHo
 
     override fun onBindViewHolder(holder: DownloadedReposViewHolder, position: Int) {
         getItem(position)?.let {
-            holder.bind(it)
+            holder.bind(it, onTextClick)
         }
     }
 }
